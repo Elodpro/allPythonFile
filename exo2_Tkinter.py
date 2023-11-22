@@ -27,6 +27,16 @@ def verifPtsWin():
         nbPtsNew = 0
         ptsTxt2.config(text=f"Points: {nbPtsNew}")
 
+def verifSetsWin():
+    global nbSetsUs, nbSetsNew, howManySets
+
+    if nbSetsUs == howManySets:
+        winLabel = Label(window, text=f"Le joueur 'Local' a gagné le match !")
+        winLabel.place(x=22, y=150)
+
+    elif nbSetsNew == howManySets:
+        winLabel2 = Label(window, text=f"Le joueur 'invité' a gagné le match !")
+        winLabel2.place(x=22, y=150)
 
 
 def takeEntry():
@@ -34,6 +44,10 @@ def takeEntry():
 
     howManySets = entrySets.get()
     howManyPts = entryPts.get()
+
+    howManyPts = int(howManyPts)
+    howManySets = int(howManySets)
+
     print(f"nb sets: {howManySets}\nnb points: {howManyPts}")
 
 
@@ -43,6 +57,7 @@ def addPointsUs():
     nbPtsUs += 1
     ptsTxt1.config(text=f"Points: {nbPtsUs}")
     verifPtsWin()
+    verifSetsWin()
 
 
 def addPointsNew():
@@ -51,6 +66,7 @@ def addPointsNew():
     nbPtsNew += 1
     ptsTxt2.config(text=f"Points: {nbPtsNew}")
     verifPtsWin()
+    verifSetsWin()
 
 
 def delPointsUs():
@@ -59,6 +75,7 @@ def delPointsUs():
     nbPtsUs -= 1
     ptsTxt1.config(text=f"Points: {nbPtsUs}")
     verifPtsWin()
+    verifSetsWin()
 
 def delPointsNew():
     global nbPtsNew, ptsTxt2
@@ -66,6 +83,7 @@ def delPointsNew():
     nbPtsNew -= 1
     ptsTxt2.config(text=f"Points: {nbSetsNew}")
     verifPtsWin()
+    verifSetsWin()
 
 
 #Variables
@@ -79,7 +97,7 @@ nbSetsNew = 0
 nbPtsNew = 0
 
 width = 235
-height = 150
+height = 200
 screenwidth = window.winfo_screenwidth()
 screenheight = window.winfo_screenheight()
 x = (screenwidth / 2) - (width / 2)
