@@ -9,34 +9,24 @@ from tkinter import *
 window = Tk()
 
 #Fonctions
-def addSetsUs():
-    global nbSetsUs, howManyPts
 
-    nbSetsUs += 1
-    setsTxt1.config(text=f"Sets: {nbSetsUs}")
+def verifPtsWin():
+    global nbPtsUs, howManyPts, ptsTxt1, nbSetsUs, setsTxt1, nbPtsNew, nbSetsNew, ptsTxt2, setsTxt2
 
-    if nbSetsUs == howManyPts:
-        nbPtsUs += 1
+    if nbPtsUs == howManyPts:
+        nbSetsUs += 1
+        setsTxt1.config(text=f"Sets: {nbSetsUs}")
+
+        nbPtsUs = 0
         ptsTxt1.config(text=f"Points: {nbPtsUs}")
 
+    elif nbPtsNew == howManyPts:
+        nbSetsNew += 1
+        setsTxt2.config(text=f"Sets: {nbSetsNew}")
 
-def delSetsUs():
-    global nbSetsUs
+        nbPtsNew = 0
+        ptsTxt2.config(text=f"Points: {nbPtsNew}")
 
-    nbSetsUs -= 1
-    setsTxt1.config(text=f"Sets: {nbSetsUs}")
-
-def addSetsNew():
-    global nbSetsNew
-
-    nbSetsNew += 1
-    setsTxt2.config(text=f"Sets: {nbSetsNew}")
-
-def delSetsNew():
-    global nbSetsNew
-
-    nbSetsNew -= 1
-    setsTxt2.config(text=f"Sets: {nbSetsNew}")
 
 
 def takeEntry():
@@ -47,6 +37,35 @@ def takeEntry():
     print(f"nb sets: {howManySets}\nnb points: {howManyPts}")
 
 
+def addPointsUs():
+    global nbPtsUs, howManyPts, ptsTxt1, setsTxt1, nbSetsUs
+
+    nbPtsUs += 1
+    ptsTxt1.config(text=f"Points: {nbPtsUs}")
+    verifPtsWin()
+
+
+def addPointsNew():
+    global nbPtsNew, howManyPts, ptsTxt2, setsTxt2, nbSetsNew
+
+    nbPtsNew += 1
+    ptsTxt2.config(text=f"Points: {nbPtsNew}")
+    verifPtsWin()
+
+
+def delPointsUs():
+    global nbPtsUs, ptsTxt1
+
+    nbPtsUs -= 1
+    ptsTxt1.config(text=f"Points: {nbPtsUs}")
+    verifPtsWin()
+
+def delPointsNew():
+    global nbPtsNew, ptsTxt2
+
+    nbPtsNew -= 1
+    ptsTxt2.config(text=f"Points: {nbSetsNew}")
+    verifPtsWin()
 
 
 #Variables
@@ -60,7 +79,7 @@ nbSetsNew = 0
 nbPtsNew = 0
 
 width = 235
-height = 500
+height = 150
 screenwidth = window.winfo_screenwidth()
 screenheight = window.winfo_screenheight()
 x = (screenwidth / 2) - (width / 2)
@@ -89,22 +108,23 @@ entryPts = Entry(frame1)
 
 #Sets, points etc du joueur local
 lcl1 = Label(frame2, text="Local:")
-plusBtn1 = Button(window, text="+", fg="green", command=addSetsUs)
-minusBtn1 = Button(window, text="-", fg="red", command=delSetsUs)
+plusBtn1 = Button(window, text="+", fg="green", command=addPointsUs)
+minusBtn1 = Button(window, text="-", fg="red", command=delPointsUs)
 setsTxt1 = Label(frame2, text=f"Sets: {nbSetsUs}")
 ptsTxt1 = Label(frame2, text=f"Points: {nbPtsUs}")
 
 
 #Sets, points etc du joueurs invité
 lcl2 = Label(frame2, text="Local:")
-plusBtn2 = Button(window, text="+", fg="green", command=addSetsNew)
-minusBtn2 = Button(window, text="-", fg="red", command=delSetsNew)
+plusBtn2 = Button(window, text="+", fg="green", command=addPointsNew)
+minusBtn2 = Button(window, text="-", fg="red", command=delPointsNew)
 setsTxt2 = Label(frame2, text=f"Sets: {nbSetsUs}")
 ptsTxt2 = Label(frame2, text=f"Points: {nbPtsUs}")
 
 
 #Prends la valeur des entrys
 takeNbBtn = Button(window, text="Envoyer", command=takeEntry)
+
 
 #Places
 
