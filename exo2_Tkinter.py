@@ -52,7 +52,8 @@ def takeEntry():
 
 
 def addPointsUs():
-    global nbPtsUs, howManyPts, ptsTxt1, setsTxt1, nbSetsUs
+    global nbPtsUs, howManyPts, ptsTxt1, setsTxt1, nbSetsUs, entryPts
+    print(entryPts.get())
 
     nbPtsUs += 1
     ptsTxt1.config(text=f"Points: {nbPtsUs}")
