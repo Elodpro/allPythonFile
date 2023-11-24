@@ -34,9 +34,16 @@ def verifSetsWin():
         winLabel = Label(window, text=f"Le joueur 'Local' a gagné le match !")
         winLabel.place(x=22, y=150)
 
+        nbPtsNew = 0
+        ptsTxt2.config(text=f"Points: {nbPtsNew}")
+
     elif nbSetsNew == howManySets:
         winLabel2 = Label(window, text=f"Le joueur 'invité' a gagné le match !")
         winLabel2.place(x=22, y=150)
+
+        nbPtsUs = 0
+        ptsTxt1.config(text=f"Points: {nbPtsUs}")
+
 
 
 def takeEntry():
