@@ -20,6 +20,8 @@ def takeEntrys():
     revenu = annualRev_Entry.get()
     coFamilial = familyCoef_Entry.get()
 
+    annualRev_Entry.delete("0", "end")
+
     print(box1)
 
     if box1Check == True:
