@@ -4,7 +4,7 @@ Date : 17.11.2023
 Auteur : ELod Arifi
 """
 from tkinter import *
-
+from tkinter.messagebox import showinfo
 
 window = Tk()
 
@@ -31,15 +31,13 @@ def verifSetsWin():
     global nbSetsUs, nbSetsNew, howManySets
 
     if nbSetsUs == howManySets:
-        winLabel = Label(window, text=f"Le joueur 'Local' a gagné le match !")
-        winLabel.place(x=22, y=150)
+        showinfo(message="Le joueur local a gagné")
 
         nbPtsNew = 0
         ptsTxt2.config(text=f"Points: {nbPtsNew}")
 
     elif nbSetsNew == howManySets:
-        winLabel2 = Label(window, text=f"Le joueur 'invité' a gagné le match !")
-        winLabel2.place(x=22, y=150)
+        showinfo(message="Le joueur invité a gagné")
 
         nbPtsUs = 0
         ptsTxt1.config(text=f"Points: {nbPtsUs}")
