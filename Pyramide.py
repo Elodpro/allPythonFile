@@ -26,9 +26,3 @@ for i in range(1, nbRows + 1):
     espaces = " " * (nbRows - i)  # Les spaces gauche
     etoiles = "* " * i  # Les étoiles du centre avec un space avant et après chaque *
     print(espaces + etoiles)
-
-
-
-
-
-
