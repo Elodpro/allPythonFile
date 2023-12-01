@@ -55,31 +55,4 @@ label3.pack(side=RIGHT)
 button2.pack(side=RIGHT)
 button1.pack(side=RIGHT)
 
-
-def fn():
-    while True:
-
-        inputNb = input("Entrez le nombre de lignes pour le sapin : ")
-
-        if inputNb.isdigit():
-            n = int(inputNb)
-
-            if 3 <= n <= 15:
-                return n
-            else:
-                print("Le nombre de lignes doit être compris entre 3 et 15.")
-        else:
-            print("Veuillez entrer un nombre entier.")
-
-
-# Demander à l'utilisateur le nombre de lignes pour le sapin
-nbRows = fn()
-Nb = nbRows
-# Boucle for pour dessiner la pyramide
-for i in range(1, nbRows + 1):
-    espaces = " " * (Nb - i)  # Les spaces gauche
-    etoiles = "* " * i  # Les étoiles du centre avec un space avant et après chaque *
-    print(espaces + etoiles)
-
-
 window.mainloop()
