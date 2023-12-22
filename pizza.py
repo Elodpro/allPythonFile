@@ -19,7 +19,7 @@ def entryFalse():
         showinfo(message="Vous devez saisir un numéro de table!")
         tableEntry.delete("0", END)
         tableEntryGet = 0
-
+""
 
 def commandeDone():
     global box1Check_bool, box2Check_bool, box3Check_bool, box4Check_bool, tableEntryGet
