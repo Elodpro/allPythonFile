@@ -6,6 +6,8 @@ Auteur : ELod Arifi
 import tkinter
 from tkinter import *
 
+
+
 #Fonctions
 
 def takeEntrys():
@@ -13,9 +15,7 @@ def takeEntrys():
     global revenu, coFamilial, deducJeune, deducTransport, rabaisFidelite
     global box1Check, box2Check, box3Check
 
-    box1Check = tkinter.BooleanVar(box1)
-    box2Check = BooleanVar(box2)
-    box3Check = BooleanVar(box3)
+
 
     revenu = annualRev_Entry.get()
     coFamilial = familyCoef_Entry.get()
@@ -24,15 +24,17 @@ def takeEntrys():
 
     print(box1)
 
-    if box1Check == True:
+    if box1Check_bool.get() :
+
         deducJeune = youngDeduc_Entry.get()
         print(deducJeune)
 
-    elif box2Check == True:
+    if box2Check_bool.get() :
         deducTransport = transportDeduc_Entry.get()
-
-    elif box3Check == True:
+        print(deducTransport)
+    if box3Check_bool.get() :
         rabaisFidelite = loyalDiscount_Entry.get()
+        print(rabaisFidelite)
 
 
 
@@ -52,6 +54,9 @@ def finalExecute():
 
 #Starter Page
 window = Tk()
+box1Check_bool = BooleanVar()
+box2Check_bool = BooleanVar()
+box3Check_bool = BooleanVar()
 width = 235
 height = 400
 screenwidth = window.winfo_screenwidth()
@@ -111,9 +116,9 @@ transportDeduc_Entry = Entry(window, width=5)
 loyalDiscount_Entry = Entry(window, width=5)
 
 #ChecksBoxs
-box1 = Checkbutton(midFrame)
-box2 = Checkbutton(midFrame)
-box3 = Checkbutton(midFrame)
+box1 = Checkbutton(midFrame, variable=box1Check_bool, onvalue=True,offvalue=False)
+box2 = Checkbutton(midFrame, variable=box2Check_bool, onvalue=True,offvalue=False)
+box3 = Checkbutton(midFrame, variable=box3Check_bool, onvalue=True,offvalue=False)
 
 #Buttons
 calculBtn = Button(window, text="Calcul", command=takeEntrys)
